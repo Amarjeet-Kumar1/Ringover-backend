@@ -49,20 +49,22 @@ exports.findProduct = async (req, res) => {
 exports.addRating = async (req, res) => {
   try {
     const id = req.query.id;
-    const newRating = req.query.rating;
+    const rating = req.query.rating;
     const product = await Product.findByPk(id);
     if (product) {
-      const rating =
-        (product.rating * product.numReviews + newRating) /
-        (product.numReviews + 1);
-      product.rating = rating;
-      product.numReviews = product.numReviews + 1;
+      const newNumReviews = product.numReviews + 1;
+      const newRating =
+        (product.rating * product.numReviews + +rating) / newNumReviews;
+
+      product.rating = newRating;
+      product.numReviews = newNumReviews;
       await product.save();
-      res.send(product);
+      res.send({ message: 'rating added', id: id });
     } else {
       res.status(400).send({ message: "product doesn't exist" });
     }
   } catch (err) {
+    console.log(err);
     res.status(500).send({ message: 'error in updating review' });
   }
 };
@@ -91,12 +93,12 @@ exports.filter = async (req, res) => {
     const costUpper = req.query.costUpper;
     const type = req.query.type;
     var options;
-    if (type == 'all') {
+    if (type === 'all') {
       options = {
         price: {
           [Op.and]: {
             [Op.gte]: costLower,
-            [Op.lte]: costLower,
+            [Op.lte]: costUpper,
           },
         },
       };
@@ -105,11 +107,11 @@ exports.filter = async (req, res) => {
         price: {
           [Op.and]: {
             [Op.gte]: costLower,
-            [Op.lte]: costLower,
+            [Op.lte]: costUpper,
           },
         },
         type: {
-          [Op.like]: typeOption,
+          [Op.like]: `%${type}%`,
         },
       };
     }
