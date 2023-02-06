@@ -1,5 +1,6 @@
 const express = require('express');
 const cors = require('cors');
+const path = require('path');
 const app = express();
 const port = process.env.PORT || 5050;
 var corsOptions = {
@@ -14,10 +15,14 @@ db.sequelize.sync().then(() => {
   console.log(' re-sync db');
 });
 
-app.get('/', async (req, res) => {
-  res.json({ message: results });
+app.get('/api', async (req, res) => {
+  res.json({ message: 'connected' });
 });
 
+app.use(express.static(path.join(__dirname, '..', 'frontend/build')));
+app.use('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '..', 'frontend/build/index.html'));
+});
 app.listen(port, () => {
   console.log(`server is running on port: ${port}`);
 });
