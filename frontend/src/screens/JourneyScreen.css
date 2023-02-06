@@ -1,0 +1,60 @@
+#journey-container {
+  width: 80%;
+  height: 150vh;
+  margin: auto;
+  margin-bottom: 5vh;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+#journey-poster {
+  margin-top: 5vh;
+  width: 100%;
+  height: 42%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#journey-heading {
+  background-color: rgba(0, 0, 0, 0.4);
+  margin: auto;
+}
+#journey-heading p {
+  color: white;
+  font-size: 48px;
+}
+#journey-description {
+  padding-top: 5vh;
+  height: 55%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.92);
+}
+#journey-list-container {
+  margin-left: 5%;
+  padding-left: 5%;
+  height: 75%;
+  width: 80%;
+  text-align: left;
+  border-left: 2px solid white;
+}
+.journey-list {
+  position: relative;
+  color: white;
+  margin-bottom: 5vh;
+}
+.list-heading {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+.list-desc {
+  font-size: 14px;
+}
+.circle {
+  position: absolute;
+  left: -7.5%;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 2px solid white;
+  background-color: black;
+}

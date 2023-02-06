@@ -1,0 +1,81 @@
+/* catalogue middle css start*/
+#catalogue-middle {
+  width: 48%;
+  height: 100%;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#catalogue-container {
+  height: 90%;
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+#catalogue-heading-container {
+  width: 100%;
+  height: 10%;
+  display: flex;
+  justify-content: space-between;
+}
+#catalogue-heading p {
+  font-size: 20px;
+}
+#catalogue-icons {
+  display: flex;
+  gap: 30px;
+}
+#catalogue-main {
+  width: 100%;
+  height: 90%;
+  overflow: auto;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+/* catalogue middle css end */
+.product-container {
+  width: 30%;
+  height: 45%;
+}
+.product-image {
+  width: 100%;
+  height: 75%;
+}
+.product-image img {
+  width: 100%;
+  height: 100%;
+}
+.product-name {
+  width: 100%;
+  height: 10%;
+  text-align: left;
+  margin-bottom: 2%;
+}
+.product-name p {
+  font-size: 18px;
+}
+.product-price-rating {
+  width: 100%;
+  height: 9%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.product-price {
+  height: 100%;
+}
+.product-price p {
+  margin-top: 10%;
+  font-size: 12px;
+}
+.rating {
+  height: 100%;
+}
+.rating span {
+  font-size: 10px;
+  color: gold;
+}

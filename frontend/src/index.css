@@ -1,0 +1,19 @@
+@font-face {
+  font-family: 'Product_Sans';
+  src: url('./myfonts/Product_Sans.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Gobold_Regular';
+  src: url('./myfonts/Gobold_Regular.otf') format('OpenType');
+}
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Product_Sans';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}

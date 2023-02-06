@@ -1,0 +1,36 @@
+.product-cart {
+  width: 100%;
+  height: 30%;
+  display: flex;
+  justify-content: space-evenly;
+}
+.product-cart-image {
+  width: 40%;
+  height: 100%;
+  position: relative;
+}
+.product-cart-image img {
+  width: 100%;
+  height: 100%;
+}
+.product-cart-details {
+  width: 40%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 10%;
+  text-align: left;
+}
+.product-cart-name {
+  font-size: 14px;
+}
+.product-cart-small {
+  font-size: 8px;
+}
+.cross {
+  color: red;
+  position: absolute;
+  top: 0;
+  left: 0;
+}

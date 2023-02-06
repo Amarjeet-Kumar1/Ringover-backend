@@ -1,0 +1,63 @@
+/* cart side css start*/
+#cart-side {
+  width: 23%;
+  height: 100%;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#cart-side-container {
+  height: 90%;
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+#cart-heading-container {
+  width: 100%;
+  height: 10%;
+  display: flex;
+  justify-content: space-between;
+}
+#cart-heading p {
+  font-size: 20px;
+}
+#cart-main {
+  width: 100%;
+  height: 75%;
+  overflow: auto;
+  position: relative;
+}
+#empty-cart {
+  width: 100%;
+  position: absolute;
+  top: 50%;
+}
+#cart-bottom-icon {
+  width: 100%;
+  height: 10%;
+  display: flex;
+  gap: 5%;
+}
+#home-location {
+  width: 30%;
+  display: flex;
+  gap: 10%;
+}
+#select-date {
+  width: 50%;
+  display: flex;
+  gap: 10%;
+}
+
+#cart-order {
+  width: 100%;
+  height: 5%;
+}
+#cart-order button {
+  background-color: black;
+  color: white;
+}
+
+/* cart side css end*/

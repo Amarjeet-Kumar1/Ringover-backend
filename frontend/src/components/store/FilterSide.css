@@ -1,0 +1,109 @@
+/* filter side css start */
+#filter-side {
+  width: 23%;
+  height: 100%;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#filter-side-container {
+  height: 90%;
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+#filter-heading-container {
+  width: 100%;
+  height: 10%;
+  display: flex;
+  justify-content: space-between;
+}
+#filter-heading p {
+  font-size: 20px;
+}
+#filter-main {
+  width: 100%;
+  height: 85%;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 5%;
+}
+#cost-filter {
+  width: 100%;
+  height: 25%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+#cost-filter p {
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+#cost-filter input,
+label {
+  font-size: 12px;
+}
+#colour-filter {
+  width: 100%;
+  height: 15%;
+  display: flex;
+  flex-direction: column;
+  align-items: flexstart;
+}
+#colour-filter p {
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+#colour-group {
+  width: 90%;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+.colour {
+  width: 15%;
+  height: 100%;
+}
+#design-filter {
+  width: 100%;
+  height: 25%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+#design-filter p {
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+#design-filter input,
+label {
+  font-size: 12px;
+}
+#type-filter {
+  width: 100%;
+  height: 25%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+#type-filter p {
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+#type-filter input,
+label {
+  font-size: 12px;
+}
+
+#filter-button {
+  width: 100%;
+  height: 5%;
+}
+#filter-button button {
+  background-color: black;
+  color: white;
+}
+/* filter side css end */
