@@ -67,7 +67,56 @@ exports.addRating = async (req, res) => {
   }
 };
 
+exports.deleteProduct = async (req, res) => {
+  try {
+    const id = req.query.id;
+    const num = await Product.destroy({
+      where: {
+        id: id,
+      },
+    });
+    if (num === 1) {
+      res.send({ message: 'deleted a product', id: id });
+    } else {
+      res.status(400).send({ message: 'error in deleting a product' });
+    }
+  } catch (err) {
+    res.status(500).send({ message: 'error in deleting a product' });
+  }
+};
+
 exports.filter = async (req, res) => {
   try {
-  } catch (error) {}
+    const costLower = req.query.costLower;
+    const costUpper = req.query.costUpper;
+    const type = req.query.type;
+    var options;
+    if (type == 'all') {
+      options = {
+        price: {
+          [Op.and]: {
+            [Op.gte]: costLower,
+            [Op.lte]: costLower,
+          },
+        },
+      };
+    } else {
+      options = {
+        price: {
+          [Op.and]: {
+            [Op.gte]: costLower,
+            [Op.lte]: costLower,
+          },
+        },
+        type: {
+          [Op.like]: typeOption,
+        },
+      };
+    }
+
+    const products = await Product.findAll({ where: options });
+    res.send(products);
+  } catch (error) {
+    res.status(500).send({ message: 'error in filtering' });
+  }
 };
