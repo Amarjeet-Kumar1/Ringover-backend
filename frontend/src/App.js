@@ -6,6 +6,8 @@ import HomeScreen from './screens/HomeScreen';
 import JourneyScreen from './screens/JourneyScreen';
 import StoreScreen from './screens/StoreScreen';
 import TeamScreen from './screens/TeamScreen';
+import AdminDashboard from './screens/AdminDashboard';
+import AdminAuth from './screens/AdminAuth';
 
 function App() {
   return (
@@ -21,6 +23,8 @@ function App() {
             <Route path="/team" element={<TeamScreen />} />
             <Route path="/store" element={<StoreScreen />} />
             <Route path="/contact" element={<ContactScreen />} />
+            <Route path="/admin" element={<AdminDashboard />} />
+            <Route path="/admin/auth" element={<AdminAuth />} />
           </Routes>
         </main>
       </div>

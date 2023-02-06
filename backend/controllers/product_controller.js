@@ -2,25 +2,6 @@ const db = require('../models');
 const Product = db.products;
 const Op = db.Op;
 
-exports.create = async (req, res) => {
-  try {
-    const product = {
-      name: req.body.name,
-      price: req.body.price,
-      rating: req.body.rating ? req.body.rating : 0,
-      numReviews: req.body.numReviews ? req.body.numReviews : 0,
-      type: req.body.type,
-      imgUrl: req.body.imgUrl,
-    };
-    const newProduct = await Product.create(product);
-    res.send(newProduct.toJSON());
-  } catch (err) {
-    res
-      .status(500)
-      .send({ message: err.message || 'error while creating product' });
-  }
-};
-
 exports.findAllProduct = async (req, res) => {
   try {
     const products = await Product.findAll();
@@ -66,24 +47,6 @@ exports.addRating = async (req, res) => {
   } catch (err) {
     console.log(err);
     res.status(500).send({ message: 'error in updating review' });
-  }
-};
-
-exports.deleteProduct = async (req, res) => {
-  try {
-    const id = req.query.id;
-    const num = await Product.destroy({
-      where: {
-        id: id,
-      },
-    });
-    if (num === 1) {
-      res.send({ message: 'deleted a product', id: id });
-    } else {
-      res.status(400).send({ message: 'error in deleting a product' });
-    }
-  } catch (err) {
-    res.status(500).send({ message: 'error in deleting a product' });
   }
 };
 
