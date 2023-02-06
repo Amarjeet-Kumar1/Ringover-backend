@@ -4,6 +4,10 @@
 
 first change MySql credentials in db_config.js file.
 
+### `cd ../..`
+
+back to main directory
+
 ### `npm run build`
 
 It will install npm in both backend and frontend folder and build frontend for production
