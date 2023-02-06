@@ -1,8 +1,8 @@
 # run following command in main directory
 
-### `cd backend && touch .bash_profile`
+### `cd backend/config && nano db_config.js`
 
-first create .bash_profile in backend folder for environment variables, which will contain MYSQL db config options
+first change MySql credentials in db_config.js file.
 
 ### `npm run build`
 
