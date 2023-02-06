@@ -1,0 +1,16 @@
+.small-container {
+  width: 80%;
+  height: 80vh;
+  margin-top: 5vh;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#main-container {
+  width: 40%;
+  height: 60%;
+}
+#main-heading p {
+  font-size: 24px;
+}
