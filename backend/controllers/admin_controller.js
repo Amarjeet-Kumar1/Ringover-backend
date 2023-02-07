@@ -3,17 +3,22 @@ const db = require('../models');
 const Product = db.products;
 const Op = db.Op;
 exports.createSession = (req, res) => {
-  if (
-    req.body.email === process.env.ADMIN_EMAIL &&
-    req.body.password === process.env.ADMIN_PASSWORD
-  ) {
-    const admin = {
-      name: process.env.ADMIN_NAME,
-      email: process.env.ADMIN_EMAIL,
-    };
-    res.send({ token: auth.generateToken(admin) });
-  } else {
-    res.send(402).send({ message: 'unauthorized' });
+  try {
+    if (
+      req.body.email === process.env.ADMIN_EMAIL &&
+      req.body.password === process.env.ADMIN_PASSWORD
+    ) {
+      const admin = {
+        name: process.env.ADMIN_NAME,
+        email: process.env.ADMIN_EMAIL,
+      };
+      const token = auth.generateToken(admin);
+      res.send({ token: token });
+    } else {
+      res.status(402).send({ message: 'unauthorized' });
+    }
+  } catch (err) {
+    res.status(500).send({ message: 'error in siginin' });
   }
 };
 
