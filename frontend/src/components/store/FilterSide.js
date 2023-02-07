@@ -1,36 +1,36 @@
+import axios from 'axios';
 import React from 'react';
-import data from '../../data';
 import './FilterSide.css';
 
 export default function FilterSide(props) {
   const { setProducts } = props;
   const onlyOne = (checkbox) => {
-    var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+    var checkboxes = document.getElementsByName(checkbox.name);
     checkboxes.forEach((item) => {
       if (item !== checkbox) item.checked = false;
     });
   };
-  const clickHandler = () => {
-    var markedCheckbox = document.querySelectorAll(
-      'input[type="checkbox"]:checked'
-    );
-    if (markedCheckbox.length > 0) {
-      var product;
-      if (markedCheckbox[0].name === 'cost') {
-        if (markedCheckbox[0].value === '1') {
-          product = data.product.filter((one) => one.price <= 4000);
-        } else {
-          product = data.product.filter((one) => one.price > 4000);
-        }
+  const clickHandler = async () => {
+    var markedCost = document.querySelectorAll('input[name="cost"]:checked');
+    var markedType = document.querySelectorAll('input[name="type"]:checked');
+    var costLower = 0;
+    var costUpper = 7000;
+    var type = 'all';
+    if (markedCost.length > 0) {
+      if (markedCost[0].value === '1') {
+        costUpper = 4000;
       } else {
-        if (markedCheckbox[0].value === 'loafer') {
-          product = data.product.filter((one) => one.type === 'loafer');
-        } else {
-          product = data.product.filter((one) => one.type === 'sneaker');
-        }
+        costLower = 4001;
       }
-      setProducts(product);
     }
+    if (markedType.length > 0) {
+      type = markedType[0].value;
+    }
+
+    const { data } = await axios.get(
+      `/api/v1/product/filter/?costLower=${costLower}&costUpper=${costUpper}&type=${type}`
+    );
+    setProducts([...data]);
   };
   return (
     <div id="filter-side">

@@ -28,7 +28,7 @@ exports.create = async (req, res) => {
       imgUrl: req.body.imgUrl,
     };
     const newProduct = await Product.create(product);
-    res.send(newProduct.toJSON());
+    res.send({ product: newProduct.toJSON(), message: 'product created' });
   } catch (err) {
     res
       .status(500)

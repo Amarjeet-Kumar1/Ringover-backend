@@ -2,7 +2,7 @@ const express = require('express');
 
 const router = express.Router();
 
-const adminController = require('../controllers/product_controller.js');
+const productController = require('../controllers/product_controller.js');
 
 router.get('/all', productController.findAllProduct);
 router.get('/find', productController.findProduct);

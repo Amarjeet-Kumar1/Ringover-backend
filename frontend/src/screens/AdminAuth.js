@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import './AdminAuth.css';
 
 export default function AdminAuth() {
+  const navigate = useNavigate();
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   const submitHandler = async (e) => {
@@ -13,15 +15,15 @@ export default function AdminAuth() {
         password,
       });
       if (data.token) {
-        console.log(data.token);
         localStorage.setItem('adminToken', data.token);
+        navigate('/admin');
       }
     } catch (err) {
       console.log(err.message || 'error in sign in');
     }
   };
   return (
-    <div className="small-container">
+    <div id="small-container">
       <div id="main-container">
         <div id="main-heading">
           <p>Admin Auth</p>

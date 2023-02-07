@@ -2,18 +2,21 @@
   width: 80%;
   height: 80vh;
   margin: auto;
-  margin-top: 5vh;
-  display: grid;
-  grid-template-areas: 'create delete' 'create message';
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
+  display: flex;
+  justify-content: space-evenly;
 }
 #create-product {
-  grid-area: create;
+  margin-top: 10vh;
+  height: 100%;
+  width: 30%;
 }
 #delete-product {
-  grid-area: delete;
+  margin-top: 10vh;
+  height: 100%;
+  width: 30%;
 }
 #message {
-  grid-area: message;
+  margin-top: 10vh;
+  height: 100%;
+  width: 30%;
 }

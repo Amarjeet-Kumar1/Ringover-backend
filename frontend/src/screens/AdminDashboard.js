@@ -1,12 +1,64 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 import './AdminDashboard.css';
 
 export default function AdminDashboard() {
+  const navigate = useNavigate();
+  const [adminToken, setAdminToken] = useState();
+  const [message, setMessage] = useState('no message');
+  const [id, setId] = useState();
+
+  useEffect(() => {
+    if (localStorage.getItem('adminToken')) {
+      setAdminToken(localStorage.getItem('adminToken'));
+    } else {
+      navigate('/admin/auth');
+    }
+  }, [setAdminToken, navigate]);
+  const createHandler = async (e) => {
+    try {
+      e.preventDefault();
+      var formData = new FormData(e);
+      console.log(formData);
+      const { data } = await axios.post(
+        '/api/v1/admin/product/create',
+        {
+          formData,
+        },
+        {
+          headers: {
+            authorization: `Bearer ${adminToken}`,
+          },
+        }
+      );
+      setMessage(data.message);
+    } catch (err) {
+      setMessage(err.message);
+    }
+  };
+
+  const deleteHandler = async (e) => {
+    try {
+      e.preventDefault();
+      const { data } = await axios.get(
+        `/api/v1/admin/product/delete/?id=${id}`,
+        {
+          headers: {
+            authorization: `Bearer ${adminToken}`,
+          },
+        }
+      );
+      setMessage(data.message);
+    } catch (err) {
+      setMessage(err.message);
+    }
+  };
   return (
     <div id="small-container">
       <div id="create-product">
         <p>Create Product</p>
-        <form>
+        <form onSubmit={createHandler}>
           <div>
             <input
               type="text"
@@ -68,9 +120,26 @@ export default function AdminDashboard() {
         </form>
       </div>
       <div id="delete-product">
-        <div></div>
+        <div id="delete-form">
+          <form onSubmit={deleteHandler}>
+            <div>
+              <input
+                type="number"
+                name="id"
+                id="id"
+                onChange={(e) => setId(e.target.value)}
+                placeholder="Enter product id"
+              />
+            </div>
+            <div>
+              <input type="submit" value="Delete Product" />
+            </div>
+          </form>
+        </div>
       </div>
-      <div id="message"></div>
+      <div id="message">
+        <p id="server-message">{message}</p>
+      </div>
     </div>
   );
 }

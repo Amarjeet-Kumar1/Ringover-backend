@@ -1,12 +1,30 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import './ProductDetails.css';
 import Rating from '../Rating';
-import { Link } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 import { Store } from '../../Store';
+import axios from 'axios';
 
-export default function ProductDetails(props) {
-  const { product } = props;
+export default function ProductDetails() {
+  const [queryParameters] = useSearchParams();
+  const [product, setProduct] = useState({});
   const { state, dispatch: ctxDispatch } = useContext(Store);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        if (queryParameters.has('id')) {
+          const id = queryParameters.get('id');
+          const { data } = await axios.get(`/api/v1/product/find/?id=${id}`);
+          setProduct(data);
+        }
+      } catch (err) {
+        window.alert(err.message);
+      }
+    };
+    fetchData();
+  }, [queryParameters]);
+
   const addCartHandler = async () => {
     ctxDispatch({
       type: 'CART_ADD_ITEM',
